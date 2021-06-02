@@ -12,10 +12,12 @@ import retrofit2.Call;
 
 public class AppConstants  {
    public static String BASE_URL = "https://fyp-1.herokuapp.com/";
-
+    public static String bidID ="bid";
  public static String userID ="uid";
     public static String token ="TOKEN";
     public static String shopID = "shop";
-
+    public static String userName = "name";
+    public static String userEmail ="email";
+   public static String total = "total";
 
 }

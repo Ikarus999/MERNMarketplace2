@@ -3,6 +3,12 @@ package com.example.mernmarketplace.models;
 public class Product {
     private String name;
 
+    public Product(String name,int quantity, double price) {
+        this.name = name;
+        this.quantity =quantity;
+        this.price = price;
+    }
+
     public String get_id() {
         return _id;
     }

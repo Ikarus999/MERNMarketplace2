@@ -23,9 +23,12 @@
         <activity android:name=".SellerHome" />
         <activity android:name=".ShopHome" />
         <activity android:name=".AddProduct" />
+        <activity android:name=".BidProduct" />
         <activity android:name=".Profile" />
         <activity android:name=".SignUp" />
+        <activity android:name=".CheckOutActivity" />
         <activity android:name=".HomeScreen" />
+        <activity android:name=".CartListActivity" />
         <activity android:name=".ProductListActivity" />
         <activity android:name=".ProductActivityCustomer" />
         <activity android:name=".LoginActivity" />

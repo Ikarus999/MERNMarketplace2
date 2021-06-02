@@ -2,6 +2,7 @@ package com.example.mernmarketplace;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -22,6 +23,7 @@ public class ShopHome extends AppCompatActivity {
    public  ImageView homeButton,shopImg;
     Button createProduct, myProducts;
     TextView nameText;
+    private Context context;
     String token, email, name,id,pic;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
     private static String[] PERMISSIONS_STORAGE = {
@@ -37,7 +39,9 @@ public class ShopHome extends AppCompatActivity {
         homeButton = findViewById(R.id.profileImage2);
         shopImg = findViewById(R.id.shopImg);
        nameText = findViewById(R.id.textView5);
+       context = this;
        pic = getIntent().getStringExtra("img");
+        Picasso.with(this).load(pic).into(shopImg);
         name = getIntent().getStringExtra("name");
         id = getIntent().getStringExtra("id");
         nameText.setText(name);
@@ -46,7 +50,7 @@ public class ShopHome extends AppCompatActivity {
         myProducts = findViewById(R.id.shopsButton);
         AppUtils.setShopIdSharedPreference(ShopHome.this,AppConstants.shopID,id);
         verifyStoragePermissions(ShopHome.this);
-        Picasso.with(ShopHome.this).load(AppConstants.BASE_URL+"api/shops/logo/"+id).into(shopImg);
+
 
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override

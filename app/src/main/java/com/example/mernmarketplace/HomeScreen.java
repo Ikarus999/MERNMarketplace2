@@ -15,6 +15,8 @@ import android.widget.Spinner;
 
 import com.example.mernmarketplace.Adapters.ProductAdapter;
 import com.example.mernmarketplace.conf.APIs;
+import com.example.mernmarketplace.conf.AppConstants;
+import com.example.mernmarketplace.conf.AppUtils;
 import com.example.mernmarketplace.conf.NetworkClient;
 import com.example.mernmarketplace.models.LoginResponse;
 import com.example.mernmarketplace.models.Product;
@@ -30,7 +32,7 @@ import retrofit2.Response;
 
 public class HomeScreen extends AppCompatActivity {
 Spinner spinner;
-ImageView profileIcon;
+ImageView profileIcon,logOutButton,cartButton;
 RecyclerView recyclerView;
 String token,email,name;
 boolean isSeller;
@@ -43,9 +45,12 @@ List<Product> products = new ArrayList<>();
         setContentView(R.layout.activity_home_screen);
         spinner = findViewById(R.id.filterSpinner);
         profileIcon = findViewById(R.id.profileImage);
+        cartButton = findViewById(R.id.profileImage3);
+        logOutButton = findViewById(R.id.logOutButton);
         recyclerView = findViewById(R.id.productList);
         token = getIntent().getStringExtra("token");
         email = getIntent().getStringExtra("email");
+        AppUtils.setUserTokenSharedPreference(HomeScreen.this, AppConstants.token,token);
         name = getIntent().getStringExtra("name");
         isSeller = getIntent().getBooleanExtra("isSeller",false);
         List<String> list = new ArrayList<>();
@@ -56,6 +61,22 @@ List<Product> products = new ArrayList<>();
         list.add("By Category");
         spinner.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.spinner_item,list));
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(HomeScreen.this,LoginActivity.class);
+                finish();
+                startActivity(i);
+                
+            }
+        });
+        cartButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i  = new Intent(HomeScreen.this,CartListActivity.class);
+                startActivity(i);
+            }
+        });
 
         profileIcon.setOnClickListener(new View.OnClickListener() {
             @Override

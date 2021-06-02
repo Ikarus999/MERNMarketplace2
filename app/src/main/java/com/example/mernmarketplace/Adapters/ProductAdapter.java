@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mernmarketplace.BidProduct;
 import com.example.mernmarketplace.ProductActivityCustomer;
 import com.example.mernmarketplace.R;
 import com.example.mernmarketplace.models.Product;
@@ -41,8 +42,17 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         holder.productPrice.setText((int)product.getPrice()+" /PKR");
         holder.sellerName.setText(product.getShop().getName());
         holder.Category.setText(product.getCategory());
+        holder.auctionImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent orderStatusIntent = new Intent(context, BidProduct.class);
+                orderStatusIntent.putExtra("title", product.getName());
+                orderStatusIntent.putExtra("image",product.getImage());
+                context.startActivity(orderStatusIntent);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            }
+        });
+        holder.productTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent orderStatusIntent = new Intent(context, ProductActivityCustomer.class);
@@ -50,6 +60,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
                 orderStatusIntent.putExtra("title", product.getName());
                 orderStatusIntent.putExtra("description", product.getDescription());
                 orderStatusIntent.putExtra("price", (int)product.getPrice()+" /PKR");
+                orderStatusIntent.putExtra("total",product.getPrice());
                 context.startActivity(orderStatusIntent);
             }
         });
@@ -63,7 +74,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
     }
 
     public class ProductHolder extends RecyclerView.ViewHolder {
-        public ImageView productImage;
+        public ImageView productImage,auctionImage;
         public TextView productTitle;
         public TextView productDescription;
         public TextView productPrice;
@@ -77,6 +88,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             productPrice = itemView.findViewById(R.id.productPrice);
             sellerName = itemView.findViewById(R.id.sellerText);
             Category = itemView.findViewById(R.id.CategoryText);
+            auctionImage = itemView.findViewById(R.id.imageView13);
 
         }
     }

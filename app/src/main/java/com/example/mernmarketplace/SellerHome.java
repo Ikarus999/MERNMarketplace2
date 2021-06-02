@@ -16,7 +16,7 @@ import com.example.mernmarketplace.conf.AppConstants;
 import com.example.mernmarketplace.conf.AppUtils;
 
 public class SellerHome extends AppCompatActivity {
-    ImageView profileButton;
+    ImageView profileButton,logOutButton;
     Button createShop, myShops;
     String token, email, name;
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
@@ -31,6 +31,7 @@ public class SellerHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_seller_home);
         profileButton = findViewById(R.id.profileImage2);
+        logOutButton = findViewById(R.id.logOutButton);
         token = getIntent().getStringExtra("token");
         email = getIntent().getStringExtra("email");
         name = getIntent().getStringExtra("name");
@@ -39,6 +40,15 @@ public class SellerHome extends AppCompatActivity {
         AppUtils.setUserTokenSharedPreference(SellerHome.this, AppConstants.token,token);
         myShops = findViewById(R.id.shopsButton);
         verifyStoragePermissions(SellerHome.this);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(SellerHome.this,LoginActivity.class);
+                finish();
+                startActivity(i);
+
+            }
+        });
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

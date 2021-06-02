@@ -1,7 +1,10 @@
 package com.example.mernmarketplace.conf;
 
 import com.example.mernmarketplace.Profile;
+import com.example.mernmarketplace.models.AuctionCreationResponse;
 import com.example.mernmarketplace.models.LoginResponse;
+import com.example.mernmarketplace.models.Order;
+import com.example.mernmarketplace.models.OrderResponse;
 import com.example.mernmarketplace.models.ProductCreationResponse;
 import com.example.mernmarketplace.models.Shop;
 import com.example.mernmarketplace.models.ShopCreationResponse;
@@ -10,9 +13,13 @@ import com.example.mernmarketplace.models.Product;
 import com.example.mernmarketplace.models.SignUpResponse;
 import com.example.mernmarketplace.models.User;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.List;
 
 import okhttp3.RequestBody;
+import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -31,7 +38,17 @@ import retrofit2.http.QueryName;
 
 //test4api@test.com XD12345
 public interface APIs {
-    
+    @GET("api/auction/{auctionId}")
+    Call<AuctionCreationResponse> getAuction(@Path("auctionId") String userId);
+
+    @POST("api/orders/{userId}")
+    @Headers("Accept: */*")
+
+    Call<OrderResponse> createOrder(@Header("Authorization") String Authorization, @Path("userId") String userId, @Body Order order);
+    @POST("api/auctions/by/{userId}")
+    @Headers("Accept: */*")
+    @Multipart
+    Call<AuctionCreationResponse> createAuction(@Header("Authorization") String Authorization, @Path("userId") String userId, @Part("itemName") RequestBody itemName, @Part("startingBid") RequestBody startingBid, @Part("bidStart") RequestBody bidStart,@Part("bidEnd") RequestBody bidEnd);
     @POST("api/users/")
     Call<SignUpResponse> signUp(@Body SignUpObj signUpObj);
     @POST("api/shops/by/{userId}")

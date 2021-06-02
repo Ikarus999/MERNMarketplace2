@@ -61,6 +61,8 @@ public class LoginActivity extends AppCompatActivity {
                                    }
                                    else{
                                        Intent i1 = new Intent(getApplicationContext(), SellerHome.class);
+                                       AppUtils.setUserEmailSharedPreference(LoginActivity.this,AppConstants.userEmail,loginResponse.getUser().getEmail());
+                                       AppUtils.setUserNameSharedPreference(LoginActivity.this,AppConstants.userName,loginResponse.getUser().getName());
                                        i1.putExtra("token",loginResponse.getToken());
                                        i1.putExtra("email",loginResponse.getUser().getEmail());
                                        i1.putExtra("isSeller",loginResponse.getUser().isSeller());

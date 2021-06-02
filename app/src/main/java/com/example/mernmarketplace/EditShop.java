@@ -52,7 +52,7 @@ String userID,shopID,pic;
         createButton = findViewById(R.id.saveShop);
        shopName.setText(getIntent().getStringExtra("name"));
         shopDescription.setText(getIntent().getStringExtra("description"));
-        Picasso.with(EditShop.this).load(AppConstants.BASE_URL+"api/shops/logo/"+shopID).into(uploadImage);
+        Picasso.with(EditShop.this).load("https://fyp-1.herokuapp.com/"+"api/shops/logo/"+shopID).into(uploadImage);
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

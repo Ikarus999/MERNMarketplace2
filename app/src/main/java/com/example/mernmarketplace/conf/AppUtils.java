@@ -69,6 +69,52 @@ public class AppUtils {
         editor.putString(key, value);
         editor.apply();
     }
+    public static String getUserNameDSharedPreference(Context context, String key) {
+
+        SharedPreferences editor = context.getSharedPreferences(AppConstants.userName, MODE_PRIVATE);
+        return editor.getString(key, null);
+    }
+    public static void setUserEmailSharedPreference(Context context, String key, String value) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(AppConstants.userEmail, MODE_PRIVATE).edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+    public static String getbidIdSharedPreference(Context context, String key) {
+
+        SharedPreferences editor = context.getSharedPreferences(AppConstants.bidID, MODE_PRIVATE);
+        return editor.getString(key, null);
+    }
+    public static void setbidSharedPreference(Context context, String key, String value) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(AppConstants.bidID, MODE_PRIVATE).edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+    public static String getUserEmailDSharedPreference(Context context, String key) {
+
+        SharedPreferences editor = context.getSharedPreferences(AppConstants.userEmail, MODE_PRIVATE);
+        return editor.getString(key, null);
+    }
+    public static void setTotalSP(Context context, String key, String value) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(AppConstants.total, MODE_PRIVATE).edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
+    public static String getTotalSP(Context context, String key) {
+
+        SharedPreferences editor = context.getSharedPreferences(AppConstants.total, MODE_PRIVATE);
+        return editor.getString(key, null);
+    }
+    public static void removeTotal(Context context, String key) {
+
+        SharedPreferences.Editor editor = context.getSharedPreferences(AppConstants.total, MODE_PRIVATE).edit();
+        editor.remove(key);
+        editor.commit();
+    }
+    public static void setUserNameSharedPreference(Context context, String key, String value) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(AppConstants.userName, MODE_PRIVATE).edit();
+        editor.putString(key, value);
+        editor.apply();
+    }
     public static String getUserIDSharedPreference(Context context, String key) {
 
         SharedPreferences editor = context.getSharedPreferences(AppConstants.userID, MODE_PRIVATE);
