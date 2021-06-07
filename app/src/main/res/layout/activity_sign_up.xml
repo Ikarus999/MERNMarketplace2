@@ -141,6 +141,7 @@
         android:background="@drawable/btn_rounded_primary"
         android:fontFamily="@font/farro_medium"
         android:text="S I G N  U P"
+        android:textColor="@color/primaryColor"
         android:textStyle="bold"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintBottom_toBottomOf="parent"

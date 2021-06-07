@@ -1,13 +1,17 @@
 package com.example.mernmarketplace;
 
-import androidx.annotation.RequiresApi;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
@@ -18,12 +22,10 @@ import com.example.mernmarketplace.conf.APIs;
 import com.example.mernmarketplace.conf.AppConstants;
 import com.example.mernmarketplace.conf.AppUtils;
 import com.example.mernmarketplace.conf.NetworkClient;
-import com.example.mernmarketplace.models.LoginResponse;
 import com.example.mernmarketplace.models.Product;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 import retrofit2.Call;
@@ -31,9 +33,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HomeScreen extends AppCompatActivity {
+    DrawerLayout drawer;
 Spinner spinner;
-ImageView profileIcon,logOutButton,cartButton;
+ImageView profileIcon, menuButton,cartButton;
 RecyclerView recyclerView;
+
+private NavigationView navigationView;
 String token,email,name;
 boolean isSeller;
 
@@ -42,17 +47,18 @@ List<Product> products = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home_screen);
+        setContentView(R.layout.drawer_layout_main);
         spinner = findViewById(R.id.filterSpinner);
-        profileIcon = findViewById(R.id.profileImage);
+        drawer = (DrawerLayout) findViewById(R.id.menu_layout);
         cartButton = findViewById(R.id.profileImage3);
-        logOutButton = findViewById(R.id.logOutButton);
+        menuButton = findViewById(R.id.logOutButton);
         recyclerView = findViewById(R.id.productList);
         token = getIntent().getStringExtra("token");
         email = getIntent().getStringExtra("email");
         AppUtils.setUserTokenSharedPreference(HomeScreen.this, AppConstants.token,token);
         name = getIntent().getStringExtra("name");
         isSeller = getIntent().getBooleanExtra("isSeller",false);
+
         List<String> list = new ArrayList<>();
         list.add("Default");
         list.add("By Name");
@@ -61,15 +67,21 @@ List<Product> products = new ArrayList<>();
         list.add("By Category");
         spinner.setAdapter(new ArrayAdapter<String>(this,
                 R.layout.spinner_item,list));
-        logOutButton.setOnClickListener(new View.OnClickListener() {
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        menuButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HomeScreen.this,LoginActivity.class);
-                finish();
-                startActivity(i);
+
+                public void onClick(View v) {
+                setItemInNavigation();
+                    drawer.openDrawer(Gravity.LEFT, true);
                 
             }
         });
+
         cartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,17 +90,7 @@ List<Product> products = new ArrayList<>();
             }
         });
 
-        profileIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(HomeScreen.this,Profile.class);
-                i.putExtra("token",token);
-                i.putExtra("name",name);
-                i.putExtra("email",email);
-                i.putExtra("isSeller",isSeller);
-                startActivity(i);
-            }
-        });
+
         APIs apiService = NetworkClient.getRetrofit().create(APIs.class);
         Call<List<Product>> call = apiService.getProducts();
         call.enqueue(new Callback<List<Product>>() {
@@ -129,4 +131,46 @@ List<Product> products = new ArrayList<>();
             }
         });
     }
+    private void setItemInNavigation() {
+
+        Menu nav_Menu = navigationView.getMenu();
+
+        nav_Menu.setGroupVisible(R.id.grpLogout, true);
+
+        nav_Menu.setGroupVisible(R.id.grpProf, true);
+
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull  MenuItem item) {
+                int id = item.getItemId();
+                switch (id) {
+
+
+                    case R.id.nav_logout:
+                        drawer.closeDrawer(Gravity.LEFT);
+
+                        Intent i = new Intent(HomeScreen.this, LoginActivity.class);
+                        finish();
+                        startActivity(i);
+
+                        break;
+
+
+                    case R.id.nav_profile:
+                        Intent i1 = new Intent(HomeScreen.this, Profile.class);
+                        i1.putExtra("token", token);
+                        i1.putExtra("name", name);
+                        i1.putExtra("email", email);
+                        i1.putExtra("isSeller", isSeller);
+                        startActivity(i1);
+                        break;
+                }
+                return true;
+            }
+
+
+        });
+    }
+
 }

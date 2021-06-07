@@ -15,6 +15,7 @@
         android:background="@drawable/btn_rounded_primary"
         android:fontFamily="@font/farro_medium"
         android:text="-"
+        android:textColor="@color/primaryColor"
         android:textStyle="bold"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintBottom_toBottomOf="@+id/productQuantity2"
@@ -65,6 +66,7 @@
         android:background="@drawable/btn_rounded_primary"
         android:fontFamily="@font/farro_medium"
         android:text="+"
+        android:textColor="@color/primaryColor"
         android:textStyle="bold"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintBottom_toTopOf="@+id/button2"
@@ -86,7 +88,7 @@
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_local_mall_24" />
+        app:srcCompat="@drawable/baseline_interests_24" />
 
     <TextView
         android:id="@+id/prodDesc"
@@ -130,6 +132,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="ADD TO CART"
+        android:textColor="@color/primaryColor"
         android:textStyle="bold"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintBottom_toBottomOf="parent"

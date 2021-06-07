@@ -39,8 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/brand_icon"
-         />
+        app:srcCompat="@drawable/brand_icon" />
 
     <ImageView
         android:id="@+id/imageView7"
@@ -54,7 +53,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:srcCompat="@drawable/baseline_shopping_basket_24" />
+        app:srcCompat="@drawable/baseline_interests_24" />
 
     <Button
         android:id="@+id/createButton"
@@ -63,6 +62,7 @@
         android:background="@drawable/btn_rounded_primary"
         android:fontFamily="@font/farro_medium"
         android:text="ADD A PRODUCT"
+        android:textColor="@color/primaryColor"
         android:textStyle="bold"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintBottom_toTopOf="@+id/shopsButton"
@@ -77,7 +77,8 @@
         android:layout_height="57dp"
         android:background="@drawable/btn_rounded_primary"
         android:fontFamily="@font/farro_medium"
-        android:text="VIEW PRODUCT"
+        android:text="VIEW PRODUCTS"
+        android:textColor="@color/primaryColor"
         android:textStyle="bold"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -110,12 +111,12 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7"
-        app:srcCompat="@drawable/baseline_local_mall_24" />
+        app:srcCompat="@drawable/baseline_interests_24" />
 
     <ImageView
         android:id="@+id/imageView11"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
         android:layout_marginTop="356dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView7"
         app:layout_constraintEnd_toEndOf="@+id/imageView7"

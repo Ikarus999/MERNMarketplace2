@@ -93,6 +93,7 @@
         android:background="@drawable/btn_rounded_primary"
         android:fontFamily="@font/farro_medium"
         android:text="@string/l_o_g_i_n"
+        android:textColor="@color/primaryColor"
         android:textStyle="bold"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintBottom_toBottomOf="parent"

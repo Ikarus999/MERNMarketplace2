@@ -13,6 +13,7 @@
         android:background="@drawable/btn_rounded_primary"
         android:fontFamily="@font/farro_medium"
         android:text="P R O C E E D"
+        android:textColor="@color/primaryColor"
         android:textStyle="bold"
         app:backgroundTint="@color/secondaryColor"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -157,7 +158,7 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/streetText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.21"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 </androidx.constraintlayout.widget.ConstraintLayout>

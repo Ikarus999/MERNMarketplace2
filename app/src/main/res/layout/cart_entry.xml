@@ -36,15 +36,16 @@
         android:id="@+id/productPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="57dp"
-        android:layout_marginRight="57dp"
+        android:layout_marginEnd="48dp"
+        android:layout_marginRight="48dp"
         android:fontFamily="@font/farro_medium"
         android:text="PRICE"
         android:textColor="@color/primaryTextColor"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/divider10"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.541" />
 
     <View
         android:id="@+id/divider10"

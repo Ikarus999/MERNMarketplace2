@@ -38,7 +38,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         final Product product = products.get(position);
         Picasso.with(context).load(product.getImage()).into(holder.productImage);
         holder.productTitle.setText(product.getName());
-        holder.productDescription.setText(product.getDescription());
+        //holder.productDescription.setText(product.getDescription());
         holder.productPrice.setText((int)product.getPrice()+" /PKR");
         holder.sellerName.setText(product.getShop().getName());
         holder.Category.setText(product.getCategory());
@@ -52,7 +52,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
 
             }
         });
-        holder.productTitle.setOnClickListener(new View.OnClickListener() {
+        holder.cartImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent orderStatusIntent = new Intent(context, ProductActivityCustomer.class);
@@ -74,9 +74,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
     }
 
     public class ProductHolder extends RecyclerView.ViewHolder {
-        public ImageView productImage,auctionImage;
+        public ImageView productImage,auctionImage,cartImage;
         public TextView productTitle;
-        public TextView productDescription;
+       // public TextView productDescription;
         public TextView productPrice;
         public TextView sellerName;
         public TextView Category;
@@ -84,11 +84,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             super(itemView);
             productImage = itemView.findViewById(R.id.productImage);
             productTitle = itemView.findViewById(R.id.productName);
-            productDescription = itemView.findViewById(R.id.productDescription);
+          // productDescription = itemView.findViewById(R.id.productDescription);
             productPrice = itemView.findViewById(R.id.productPrice);
             sellerName = itemView.findViewById(R.id.sellerText);
             Category = itemView.findViewById(R.id.CategoryText);
-            auctionImage = itemView.findViewById(R.id.imageView13);
+            auctionImage = itemView.findViewById(R.id.imageView15);
+            cartImage = itemView.findViewById(R.id.imageView13);
 
         }
     }
