@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/stateText" />
+        app:layout_constraintTop_toBottomOf="@+id/totalText" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/stateText"
@@ -40,7 +40,7 @@
         android:textAlignment="center"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:textColor="@android:color/black"
-        app:layout_constraintBottom_toTopOf="@+id/checkoutButton"
+        app:layout_constraintBottom_toTopOf="@+id/totalText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,7 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/totalText" />
+        app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/cityText"
@@ -142,7 +142,7 @@
         android:text="CHECKOUT"
         android:textColor="@color/primaryTextColor"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/totalText"
+        app:layout_constraintBottom_toTopOf="@+id/streetText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -156,9 +156,9 @@
         android:text="TOTAL"
         android:textColor="@color/primaryTextColor"
         android:textSize="22sp"
-        app:layout_constraintBottom_toTopOf="@+id/streetText"
+        app:layout_constraintBottom_toTopOf="@+id/checkoutButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.21"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toBottomOf="@+id/stateText" />
 </androidx.constraintlayout.widget.ConstraintLayout>
