@@ -21,43 +21,45 @@
         app:layout_constraintVertical_bias="0.011"
         app:srcCompat="@drawable/baseline_store_24" />
 
-    <TextView
-        android:id="@+id/textView6"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="151dp"
-        android:layout_marginRight="151dp"
-        android:layout_marginBottom="10dp"
-        android:fontFamily="@font/farro_bold"
-        android:text="SHOP NAME"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView7"
-        app:layout_constraintEnd_toStartOf="@+id/divider13"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/divider12"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="107dp"
-        android:layout_marginRight="107dp"
-        android:layout_marginBottom="9dp"
-        android:fontFamily="@font/farro_medium"
-        android:text="SHOP DESCRIPTION"
-        android:textColor="@color/primaryTextColor"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/divider10"
-        app:layout_constraintEnd_toStartOf="@+id/divider13"
-        app:layout_constraintStart_toEndOf="@+id/divider12"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/farro_medium"
+            android:text="SHOP DESCRIPTION"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/farro_bold"
+            android:text="SHOP NAME"
+            android:textColor="@color/primaryTextColor"
+            android:textSize="18sp" />
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/imageView6"
