@@ -47,6 +47,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/shoplist" />
 
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/farro_bold"
+        android:text="MY CART"
+        android:textColor="@color/primaryTextColor"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/shoplist"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
     <Button
         android:id="@+id/saveShop2"
         android:layout_width="300dp"
@@ -67,6 +81,7 @@
         android:id="@+id/shoplist"
         android:layout_width="404dp"
         android:layout_height="285dp"
+        android:background="@drawable/edittext_rectangular"
         app:layout_constraintBottom_toTopOf="@+id/textView9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
