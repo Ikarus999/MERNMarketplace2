@@ -61,6 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="417dp"
         android:layout_marginTop="19dp"
+        android:background="@drawable/edittext_rectangular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
