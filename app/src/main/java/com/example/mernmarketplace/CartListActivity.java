@@ -35,7 +35,7 @@ ImageView homeIcon;
 TextView totalText;
 RecyclerView recyclerView;
 Button checkOut;
-double gTotal=0;
+int gTotal=0;
 DBManager dbManager;
 boolean isSeller;
 

@@ -19,6 +19,11 @@ import com.example.mernmarketplace.models.AuctionCreationResponse;
 import com.example.mernmarketplace.models.ProductCreationResponse;
 import com.squareup.picasso.Picasso;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.SimpleTimeZone;
+
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -34,6 +39,7 @@ public class BidProduct extends AppCompatActivity {
 
     String prodName,img;
     int quantity = 0;
+    int price =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +53,10 @@ public class BidProduct extends AppCompatActivity {
         addButton = findViewById(R.id.addButton);
         prodName = getIntent().getStringExtra("title");
        img = getIntent().getStringExtra("image");
+       price = getIntent().getIntExtra("price",0);
         Picasso.with(BidProduct.this).load(img).into(prodImage);
+        if(price!=0)
+            quantityText.setText(""+price);
         mainText.setText(prodName);
         subButton = findViewById(R.id.subButton);
         if(AppUtils.getbidIdSharedPreference(BidProduct.this,AppConstants.bidID)!=null){
@@ -56,7 +65,7 @@ public class BidProduct extends AppCompatActivity {
             call.enqueue(new Callback<AuctionCreationResponse>() {
                 @Override
                 public void onResponse(Call<AuctionCreationResponse> call, Response<AuctionCreationResponse> response) {
-                    quantityText.setText(response.body().getStartingBid());
+                    quantityText.setText(""+response.body().getStartingBid());
                    startDate.setText(response.body().getBidStart());
                     endDate.setText(response.body().getBidEnd());
                 }
@@ -71,7 +80,7 @@ public class BidProduct extends AppCompatActivity {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quantity += 1;
+                quantity = Integer.parseInt(quantityText.getText().toString())+1;
                 quantityText.setText(""+quantity);
             }
         });
@@ -79,19 +88,32 @@ public class BidProduct extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 quantity = quantity -1;
-                if(quantity<0)
-                    quantity = 0;
+                if(quantity<price)
+                    quantity = price;
                 quantityText.setText(""+quantity);
             }
         });
         saveProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Date start = new Date();
+                Date end = new Date();
+               SimpleDateFormat sdf = new SimpleDateFormat("dd/mm/yyyy");
+                try {
+                    start = sdf.parse(startDate.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    end = sdf.parse(endDate.getText().toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 if(startDate.getText().toString()!=""&& endDate.getText().toString()!="" && quantity!=0 ) {
                     RequestBody itemName = RequestBody.create(MediaType.parse("text/plain"), mainText.getText().toString());
                     RequestBody startingBid = RequestBody.create(MediaType.parse("text/plain"), quantityText.getText().toString());
-                    RequestBody bidStart = RequestBody.create(MediaType.parse("text/plain"), startDate.getText().toString());
-                    RequestBody bidEnd = RequestBody.create(MediaType.parse("text/plain"), endDate.getText().toString());
+                    RequestBody bidStart = RequestBody.create(MediaType.parse("text/plain"), start.toString());
+                    RequestBody bidEnd = RequestBody.create(MediaType.parse("text/plain"), end.toString());
 
 
                     APIs apiService = NetworkClient.getRetrofit().create(APIs.class);
@@ -101,7 +123,7 @@ public class BidProduct extends AppCompatActivity {
                         public void onResponse(Call<AuctionCreationResponse> call, Response<AuctionCreationResponse> response) {
                             Log.d("Server Response", "Response: "+response.code());
                             if(response.body()!=null && response.code()==200){
-                                Toast.makeText(BidProduct.this,"Bid placed Successfully",Toast.LENGTH_LONG).show();
+                               AppUtils.showCancelAlert(BidProduct.this,"Bid Placed Successfully");
                                 AuctionCreationResponse auctionCreationResponse = response.body();
                                 AppUtils.setbidSharedPreference(BidProduct.this,AppConstants.bidID,auctionCreationResponse.getId());
                             }
@@ -109,7 +131,7 @@ public class BidProduct extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<AuctionCreationResponse> call, Throwable t) {
-                            Toast.makeText(BidProduct.this,"Could not place bid",Toast.LENGTH_LONG).show();
+                            AppUtils.showCancelAlert(BidProduct.this,"Could Not Place Bid");
 
                         }
                     });

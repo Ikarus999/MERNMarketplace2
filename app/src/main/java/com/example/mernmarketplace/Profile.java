@@ -75,8 +75,7 @@ public static  String endPoint;
                     public void onResponse(Call<User> call, Response<User> response) {
                         Log.d("server response", "" + response.code());
                         if (response.body() != null && response.code() == 200)
-                            Toast.makeText(Profile.this, "Your Profile has been updated successfully!", Toast.LENGTH_LONG).show();
-
+                        AppUtils.showCancelAlert(Profile.this,"Profile has been updated");
                     }
                     @Override
                     public void onFailure(Call<User> call, Throwable t) {

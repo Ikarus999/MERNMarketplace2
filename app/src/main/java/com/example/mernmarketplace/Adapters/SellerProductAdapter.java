@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.mernmarketplace.BidProduct;
 import com.example.mernmarketplace.EditProduct;
 import com.example.mernmarketplace.ProductActivityCustomer;
 import com.example.mernmarketplace.R;
@@ -44,7 +45,7 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
        //+ holder.sellerName.setText(product.getShop().getName());
         holder.Category.setText(product.getCategory());
         holder.productQuantity.setText("Available Units: "+product.getQuantity());
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.editProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent orderStatusIntent = new Intent(context, EditProduct.class);
@@ -60,6 +61,17 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
                 context.startActivity(orderStatusIntent);
             }
         });
+        holder.productBid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent orderStatusIntent = new Intent(context, BidProduct.class);
+                orderStatusIntent.putExtra("title", product.getName());
+                orderStatusIntent.putExtra("price",product.getPrice());
+                orderStatusIntent.putExtra("image",product.getImage());
+                context.startActivity(orderStatusIntent);
+
+            }
+        });
 
 
     }
@@ -70,7 +82,7 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
     }
 
     public class ProductHolder extends RecyclerView.ViewHolder {
-        public ImageView productImage;
+        public ImageView productImage,productBid,editProduct;
         public TextView productTitle;
         public TextView productDescription;
         public TextView productPrice;
@@ -84,7 +96,8 @@ public class SellerProductAdapter extends RecyclerView.Adapter<SellerProductAdap
             productPrice = itemView.findViewById(R.id.productPrice);
             productQuantity = itemView.findViewById(R.id.textView12);
             Category = itemView.findViewById(R.id.productCategory);
-
+    productBid = itemView.findViewById(R.id.imageView15);
+    editProduct = itemView.findViewById(R.id.editIcon);
         }
     }
 }

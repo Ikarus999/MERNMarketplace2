@@ -7,11 +7,28 @@
     android:background="@color/primaryColor">
 
     <ImageView
+        android:id="@+id/imageView15"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center|end"
+        android:layout_marginStart="54dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginTop="31dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/splash_background"
+        app:layout_constraintBottom_toTopOf="@+id/divider10"
+        app:layout_constraintEnd_toStartOf="@+id/divider11"
+        app:layout_constraintStart_toEndOf="@+id/textView12"
+        app:layout_constraintTop_toBottomOf="@+id/productPrice"
+        app:srcCompat="@drawable/outline_price_change_24" />
+
+    <ImageView
         android:id="@+id/imageView5"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginTop="24dp"
-        android:background="@drawable/splash_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/baseline_interests_24" />
@@ -42,7 +59,7 @@
         android:fontFamily="@font/farro_medium"
         android:text="AVAILABLE QUANTITY"
         android:textColor="@color/primaryTextColor"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toEndOf="@+id/divider7"
         app:layout_constraintTop_toBottomOf="@+id/productCategory" />
 
@@ -55,7 +72,7 @@
         android:fontFamily="@font/farro_medium"
         android:text="CATEGORY"
         android:textColor="@color/primaryTextColor"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintStart_toEndOf="@+id/divider7"
         app:layout_constraintTop_toBottomOf="@+id/productDescription" />
@@ -87,7 +104,7 @@
         android:fontFamily="@font/farro_medium"
         android:text="PRODUCT DESCRIPTION"
         android:textColor="@color/primaryTextColor"
-        android:textSize="16sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/productCategory"
         app:layout_constraintStart_toEndOf="@+id/divider7"
         app:layout_constraintTop_toBottomOf="@+id/productName" />

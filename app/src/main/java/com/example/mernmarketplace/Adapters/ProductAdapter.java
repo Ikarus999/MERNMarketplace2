@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.mernmarketplace.BidProduct;
 import com.example.mernmarketplace.ProductActivityCustomer;
 import com.example.mernmarketplace.R;
+import com.example.mernmarketplace.conf.AppUtils;
 import com.example.mernmarketplace.models.Product;
 import com.squareup.picasso.Picasso;
 
@@ -42,16 +43,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
         holder.productPrice.setText((int)product.getPrice()+" /PKR");
         holder.sellerName.setText(product.getShop().getName());
         holder.Category.setText(product.getCategory());
-        holder.auctionImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent orderStatusIntent = new Intent(context, BidProduct.class);
-                orderStatusIntent.putExtra("title", product.getName());
-                orderStatusIntent.putExtra("image",product.getImage());
-                context.startActivity(orderStatusIntent);
 
-            }
-        });
         holder.cartImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,7 +80,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductH
             productPrice = itemView.findViewById(R.id.productPrice);
             sellerName = itemView.findViewById(R.id.sellerText);
             Category = itemView.findViewById(R.id.CategoryText);
-            auctionImage = itemView.findViewById(R.id.imageView15);
+
             cartImage = itemView.findViewById(R.id.imageView13);
 
         }

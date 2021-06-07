@@ -33,7 +33,6 @@
         android:layout_marginLeft="118dp"
         android:layout_marginEnd="118dp"
         android:layout_marginRight="118dp"
-        android:background="@drawable/splash_background"
         android:contentDescription="LOGO"
         app:layout_constraintBottom_toTopOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="parent"

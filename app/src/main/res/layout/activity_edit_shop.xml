@@ -27,7 +27,6 @@
         android:id="@+id/shopImg"
         android:layout_width="175dp"
         android:layout_height="175dp"
-        android:background="@drawable/splash_background"
 
         android:contentDescription="LOGO"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
@@ -35,8 +34,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_store_24"
-        />
+        app:srcCompat="@drawable/baseline_store_24" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/shopNameText"
