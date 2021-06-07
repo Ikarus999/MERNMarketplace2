@@ -79,17 +79,16 @@
         android:id="@+id/profileImage3"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginStart="62dp"
-        android:layout_marginLeft="62dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginBottom="175dp"
         android:background="@drawable/splash_background"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/logOutButton"
+        app:layout_constraintBottom_toTopOf="@+id/divider9"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.794"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/baseline_shopping_cart_24" />
 
     <ImageView
@@ -101,13 +100,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="62dp"
         android:layout_marginRight="62dp"
-        android:layout_marginBottom="244dp"
+        android:layout_marginBottom="175dp"
         android:background="@drawable/splash_background"
         android:clickable="true"
         app:layout_constraintBottom_toTopOf="@+id/divider9"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/baseline_menu_24" />
 
     <TextView
